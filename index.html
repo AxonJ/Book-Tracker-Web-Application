@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Tracker</title>
+</head>
+<body>
+    <h1>Book Tracker</h1>
+
+    <h2>Add a New Book</h2>
+    <form action="/add" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required>
+        <button type="submit">Add Book</button>
+    </form>
+
+    <h2>Books List</h2>
+    <ul>
+        {% for book in books %}
+            <li>
+                <strong>{{ book.title }}</strong> by {{ book.author }}
+                <a href="{{ url_for('delete_book', book_id=book.id) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
